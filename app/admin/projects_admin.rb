@@ -33,7 +33,7 @@ Trestle.resource(:projects) do
 
   form do |project|
     text_field :name
-    text_field :api_key, readonly: true, disabled: true
+    text_field :api_key, readonly: project.persisted?, disabled: project.persisted?
     datetime_field :created_at, readonly: true, disabled: true
     datetime_field :updated_at, readonly: true, disabled: true
   end

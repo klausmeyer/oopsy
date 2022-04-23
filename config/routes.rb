@@ -3,7 +3,9 @@
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  root to: redirect("/admin")
+  root to: redirect("/web")
+
+  mount Trestle::Engine, at: "/web", as: :web_routes
 
   get :ping, to: ->(env) { ["200", {"Content-Type" => "text/plain"}, ["pong"]] }
 

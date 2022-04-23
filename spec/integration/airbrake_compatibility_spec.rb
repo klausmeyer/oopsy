@@ -20,6 +20,10 @@ RSpec.describe "Airbrake compatibility" do
     end
   end
 
+  after :all do
+    Project.delete_all
+  end
+
   let(:error) do
     RuntimeError.new "Something went wrong"
   end
