@@ -1,4 +1,5 @@
 Trestle.resource(:error_occurrences) do
+  remove_action :new
   remove_action :create
   remove_action :destroy
   remove_action :update
@@ -36,7 +37,7 @@ Trestle.resource(:error_occurrences) do
   form do |error_occurrence|
     text_field :error_type, readonly: true
     text_field :error_message, readonly: true
-    text_area :backtrace, readonly: true
+    json :backtrace, readonly: true
     text_field :created_at, readonly: true
     text_field :updated_at, readonly: true
   end

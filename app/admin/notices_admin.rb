@@ -1,4 +1,5 @@
 Trestle.resource(:notices) do
+  remove_action :new
   remove_action :create
   remove_action :destroy
   remove_action :update
@@ -17,7 +18,10 @@ Trestle.resource(:notices) do
 
   table do
     column :id
-    column :number_of_errors, -> (notice) { notice.error_occurrences.count }
+    column :action, ->(notice) { notice.context["action"] }
+    column :component, ->(notice) { notice.context["component"] }
+    column :session, ->(notice) { notice.session["session_id"] }
+    column :number_of_errors, ->(notice) { notice.error_occurrences.count }
     column :created_at
   end
 
@@ -37,7 +41,7 @@ Trestle.resource(:notices) do
       json :context, readonly: true
       json :session, readonly: true
       json :environment, readonly: true
-      json :session, readonly: true
+      json :params, readonly: true
 
       text_field :created_at, readonly: true
       text_field :updated_at, readonly: true

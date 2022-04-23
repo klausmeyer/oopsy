@@ -13,10 +13,10 @@ class Notices::ParseRawDataJob < ApplicationJob
   attr_accessor :notice
 
   def parse_data
-    %w(context environment session params).each do |key|
+    %w[context environment session params].each do |key|
       notice.public_send("#{key}=", notice.raw[key])
     end
-    
+
     notice.save!
   end
 

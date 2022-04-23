@@ -11,7 +11,7 @@ RSpec.describe Notices::ParseRawDataJob do
     it "parses the raw json and creates errors from it" do
       expect { job.perform(notice) }.to change { notice.error_occurrences.count }.from(0).to(2)
 
-      error = notice.error_occurrences.first
+      error = notice.error_occurrences.last
       expect(error.error_type).to eq "error1"
       expect(error.error_message).to eq "message1"
       expect(error.backtrace).to eq [

@@ -16,7 +16,7 @@ module Notices
     attr_accessor :raw, :record
 
     def create_record
-      self.record ||= Notice.create! raw: raw
+      self.record ||= Notice.create! raw: JSON.parse(raw)
     end
 
     def schedule_parsing
