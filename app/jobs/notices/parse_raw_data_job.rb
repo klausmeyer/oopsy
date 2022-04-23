@@ -23,6 +23,7 @@ class Notices::ParseRawDataJob < ApplicationJob
   def parse_errors
     Array.wrap(notice.raw["errors"]).each do |error|
       notice.error_occurrences.create!(
+        project:       notice.project,
         error_type:    error["type"],
         error_message: error["message"],
         backtrace:     error["backtrace"]

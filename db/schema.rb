@@ -10,18 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_23_191333) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_23_231503) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "error_occurrences", force: :cascade do |t|
+    t.bigint "project_id", null: false
     t.bigint "notice_id", null: false
+    t.bigint "error_unity_id"
     t.string "error_type"
     t.string "error_message"
     t.json "backtrace"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["error_unity_id"], name: "index_error_occurrences_on_error_unity_id"
     t.index ["notice_id"], name: "index_error_occurrences_on_notice_id"
+    t.index ["project_id"], name: "index_error_occurrences_on_project_id"
+  end
+
+  create_table "error_unities", force: :cascade do |t|
+    t.bigint "project_id", null: false
+    t.string "error_type"
+    t.string "error_message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_error_unities_on_project_id"
   end
 
   create_table "notices", force: :cascade do |t|
@@ -43,5 +56,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_23_191333) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "error_occurrences", "error_unities"
   add_foreign_key "error_occurrences", "notices"
 end

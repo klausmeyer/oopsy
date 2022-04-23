@@ -1,5 +1,6 @@
 class Project < ApplicationRecord
   has_many :notices
+  has_many :error_unities
 
   after_initialize :generate_defaults, if: :new_record?
 

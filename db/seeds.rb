@@ -12,11 +12,15 @@ project = Project.create_or_find_by!(name: "Demo Project")
 
 return if Notice.any?
 
-notice = Notice.create!(
-  project: project,
-  raw:     JSON.parse(
-    File.read(Rails.root.join("spec/fixtures/files/airbrake/create-notice-v3-request-body.json"))
+5.times do
+  notice = Notice.create!(
+    project: project,
+    raw:     JSON.parse(
+      File.read(Rails.root.join("spec/fixtures/files/airbrake/create-notice-v3-request-body.json"))
+    )
   )
-)
 
-Notices::ParseRawDataJob.perform_now(notice)
+  Notices::ParseRawDataJob.perform_now(notice)
+end
+
+Errors::CollectErrorUnities.call

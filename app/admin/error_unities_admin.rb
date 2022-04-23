@@ -1,11 +1,11 @@
-Trestle.resource(:notices) do
+Trestle.resource(:error_unities) do
   remove_action :new
   remove_action :create
   remove_action :destroy
   remove_action :update
 
   menu do
-    item :notices, icon: "fa fa-star", priority: 4
+    item :error_unities, icon: "fa fa-star", priority: 2
   end
 
   # Customize the table columns shown on the index view.
@@ -19,16 +19,14 @@ Trestle.resource(:notices) do
   table do
     column :id
     column :project
-    column :action, ->(notice) { notice.context["action"] }
-    column :component, ->(notice) { notice.context["component"] }
-    column :session, ->(notice) { notice.session["session_id"] }
-    column :number_of_errors, ->(notice) { notice.error_occurrences.count }
+    column :error_type
+    column :error_message
     column :created_at
   end
 
   # Customize the form fields shown on the new/edit views.
   #
-  # form do |notice|
+  # form do |error_unity|
   #   text_field :name
   #
   #   row do
@@ -37,28 +35,18 @@ Trestle.resource(:notices) do
   #   end
   # end
 
-  form do |notice|
-    tab :notice do
-      json :context, readonly: true
-      json :session, readonly: true
-      json :environment, readonly: true
-      json :params, readonly: true
-      datetime_field :created_at, readonly: true, disabled: true
-      datetime_field :updated_at, readonly: true, disabled: true
+  form do |error_unity|
+    tab :error_unity do
     end
 
-    tab :error_occurrences, badge: notice.error_occurrences.count do
-      table notice.error_occurrences, admin: :error_occurrences do
+    tab :error_occurrences, badge: error_unity.error_occurrences.count do
+      table error_unity.error_occurrences, admin: :error_occurrences do
         column :id
         column :project
         column :error_type
         column :error_message
         column :created_at
       end
-    end
-
-    tab :debug do
-      json :raw, readonly: true
     end
   end
 
@@ -70,6 +58,6 @@ Trestle.resource(:notices) do
   #   http://guides.rubyonrails.org/action_controller_overview.html#strong-parameters
   #
   # params do |params|
-  #   params.require(:notice).permit(:name, ...)
+  #   params.require(:error_unity).permit(:name, ...)
   # end
 end

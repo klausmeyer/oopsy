@@ -18,6 +18,7 @@ Trestle.resource(:error_occurrences) do
 
   table do
     column :id
+    column :project
     column :error_type
     column :error_message
     column :created_at
