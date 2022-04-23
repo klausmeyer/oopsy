@@ -15,7 +15,14 @@ module Api
       end
 
       def notice
-        @notice ||= Notices::CreateFromRaw.new(request.raw_post).call
+        @notice ||= Notices::CreateFromRaw.new(
+          project: project,
+          raw:     request.raw_post
+        ).call
+      end
+
+      def project
+        @project ||= Project.find(params[:project_id])
       end
     end
   end

@@ -5,7 +5,7 @@ Trestle.resource(:notices) do
   remove_action :update
 
   menu do
-    item :notices, icon: "fa fa-star", priority: :first
+    item :notices, icon: "fa fa-star", priority: 2
   end
 
   # Customize the table columns shown on the index view.
@@ -18,6 +18,7 @@ Trestle.resource(:notices) do
 
   table do
     column :id
+    column :project
     column :action, ->(notice) { notice.context["action"] }
     column :component, ->(notice) { notice.context["component"] }
     column :session, ->(notice) { notice.session["session_id"] }
@@ -42,9 +43,8 @@ Trestle.resource(:notices) do
       json :session, readonly: true
       json :environment, readonly: true
       json :params, readonly: true
-
-      text_field :created_at, readonly: true
-      text_field :updated_at, readonly: true
+      datetime_field :created_at, readonly: true, disabled: true
+      datetime_field :updated_at, readonly: true, disabled: true
     end
 
     tab :error_occurrences, badge: notice.error_occurrences.count do

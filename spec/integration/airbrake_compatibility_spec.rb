@@ -8,13 +8,13 @@ RSpec.describe "Airbrake compatibility" do
   before :all do
     local_server_start
     local_server_wait
-  end
 
-  before do
+    project = FactoryBot.create :project
+
     Airbrake.configure do |c|
       c.host          = "http://127.0.0.1:3000"
-      c.project_id    = 105138
-      c.project_key   = "fd04e13d806a90f96614ad8e529b2822"
+      c.project_id    = project.id
+      c.project_key   = project.api_key
       c.remote_config = false
       c.logger        = Rails.logger
     end

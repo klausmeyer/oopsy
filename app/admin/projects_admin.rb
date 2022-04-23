@@ -1,11 +1,8 @@
-Trestle.resource(:error_occurrences) do
-  remove_action :new
-  remove_action :create
+Trestle.resource(:projects) do
   remove_action :destroy
-  remove_action :update
 
   menu do
-    item :error_occurrences, icon: "fa fa-star", priority: 3
+    item :projects, icon: "fa fa-star", priority: 1
   end
 
   # Customize the table columns shown on the index view.
@@ -18,14 +15,14 @@ Trestle.resource(:error_occurrences) do
 
   table do
     column :id
-    column :error_type
-    column :error_message
+    column :name
+    column :api_key
     column :created_at
   end
 
   # Customize the form fields shown on the new/edit views.
   #
-  # form do |error_occurrence|
+  # form do |project|
   #   text_field :name
   #
   #   row do
@@ -34,10 +31,9 @@ Trestle.resource(:error_occurrences) do
   #   end
   # end
 
-  form do |error_occurrence|
-    text_field :error_type, readonly: true, disabled: true
-    text_field :error_message, readonly: true, disabled: true
-    json :backtrace, readonly: true, disabled: true
+  form do |project|
+    text_field :name
+    text_field :api_key, readonly: true, disabled: true
     datetime_field :created_at, readonly: true, disabled: true
     datetime_field :updated_at, readonly: true, disabled: true
   end
@@ -50,6 +46,6 @@ Trestle.resource(:error_occurrences) do
   #   http://guides.rubyonrails.org/action_controller_overview.html#strong-parameters
   #
   # params do |params|
-  #   params.require(:error_occurrence).permit(:name, ...)
+  #   params.require(:project).permit(:name, ...)
   # end
 end

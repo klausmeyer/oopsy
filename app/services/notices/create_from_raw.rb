@@ -1,7 +1,8 @@
 module Notices
   class CreateFromRaw
-    def initialize(raw)
-      self.raw = raw
+    def initialize(project:, raw:)
+      self.project = project
+      self.raw     = raw
     end
 
     def call
@@ -13,10 +14,10 @@ module Notices
 
     private
 
-    attr_accessor :raw, :record
+    attr_accessor :project, :raw, :record
 
     def create_record
-      self.record ||= Notice.create! raw: JSON.parse(raw)
+      self.record ||= project.notices.create! raw: JSON.parse(raw)
     end
 
     def schedule_parsing
