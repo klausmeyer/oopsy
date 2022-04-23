@@ -19,7 +19,10 @@ Trestle.resource(:notices) do
   table do
     column :id
     column :project
-    column :uuid
+    column :uuid, ->(notice) { notice.uuid[0, 7] }
+    column :component, ->(notice) { notice.context["component"] }
+    column :action, ->(notice) { notice.context["action"] }
+    column :host, ->(notice) { notice.context["hostname"] }
     column :number_of_errors, ->(notice) { notice.error_occurrences.count }
     column :created_at
   end
