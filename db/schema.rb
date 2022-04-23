@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_23_164737) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_23_171226) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "error_occurrences", force: :cascade do |t|
+    t.bigint "notice_id", null: false
+    t.string "error_type"
+    t.string "error_message"
+    t.json "backtrace"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["notice_id"], name: "index_error_occurrences_on_notice_id"
+  end
 
   create_table "notices", force: :cascade do |t|
     t.json "raw"
@@ -20,4 +30,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_23_164737) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "error_occurrences", "notices"
 end

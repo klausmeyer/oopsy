@@ -15,7 +15,7 @@ module Api
       end
 
       def notice
-        @notice ||= Notice.create! raw: JSON.parse(request.raw_post)
+        @notice ||= Notices::CreateFromRaw.new(request.raw_post).call
       end
     end
   end

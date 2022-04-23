@@ -13,7 +13,7 @@ module RackServer
         Threads:   "0:4",
         Workers:   0,
         Daemonize: false,
-        Silent:    true,
+        Silent:    true
       )
     end
   end
