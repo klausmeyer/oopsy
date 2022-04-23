@@ -38,6 +38,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_23_231503) do
   end
 
   create_table "notices", force: :cascade do |t|
+    t.string "uuid"
     t.bigint "project_id", null: false
     t.json "context"
     t.json "environment"
@@ -47,6 +48,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_23_231503) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_notices_on_project_id"
+    t.index ["uuid"], name: "index_notices_on_uuid", unique: true
   end
 
   create_table "projects", force: :cascade do |t|

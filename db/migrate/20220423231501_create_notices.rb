@@ -1,6 +1,7 @@
 class CreateNotices < ActiveRecord::Migration[7.0]
   def change
     create_table :notices do |t|
+      t.string :uuid
       t.references :project, null: false
       t.json :context
       t.json :environment
@@ -9,6 +10,8 @@ class CreateNotices < ActiveRecord::Migration[7.0]
       t.json :raw, null: false
 
       t.timestamps
+
+      t.index :uuid, unique: true
     end
   end
 end

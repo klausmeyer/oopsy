@@ -5,7 +5,7 @@ Trestle.resource(:notices) do
   remove_action :update
 
   menu do
-    item :notices, icon: "fa fa-star", priority: 4
+    item :notices, icon: "fa fa-bell", priority: 4
   end
 
   # Customize the table columns shown on the index view.
@@ -19,9 +19,7 @@ Trestle.resource(:notices) do
   table do
     column :id
     column :project
-    column :action, ->(notice) { notice.context["action"] }
-    column :component, ->(notice) { notice.context["component"] }
-    column :session, ->(notice) { notice.session["session_id"] }
+    column :uuid
     column :number_of_errors, ->(notice) { notice.error_occurrences.count }
     column :created_at
   end
@@ -39,6 +37,7 @@ Trestle.resource(:notices) do
 
   form do |notice|
     tab :notice do
+      text_field :uuid, readonly: true
       json :context, readonly: true
       json :session, readonly: true
       json :environment, readonly: true
@@ -51,6 +50,9 @@ Trestle.resource(:notices) do
       table notice.error_occurrences, admin: :error_occurrences do
         column :id
         column :project
+        column :notice do
+          link_to "Notice (#{notice.uuid[0, 7]})", notices_admin_path(notice)
+        end
         column :error_type
         column :error_message
         column :created_at

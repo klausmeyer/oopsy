@@ -2,7 +2,7 @@ Trestle.resource(:projects) do
   remove_action :destroy
 
   menu do
-    item :projects, icon: "fa fa-star", priority: 1
+    item :projects, icon: "fa fa-code-branch", priority: 1
   end
 
   # Customize the table columns shown on the index view.
