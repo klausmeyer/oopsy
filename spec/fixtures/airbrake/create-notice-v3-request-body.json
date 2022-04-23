@@ -1,0 +1,68 @@
+{
+  "errors": [
+    {
+      "type": "error1",
+      "message": "message1",
+      "backtrace": [
+        {
+          "file": "backtrace file",
+          "line": 10,
+          "function": "backtrace function",
+          "code": {
+            "1": "code",
+            "2": "more code"
+          }
+        }
+      ]
+    },
+    {
+      "type": "error2",
+      "message": "message2",
+      "backtrace": [
+        {
+          "file": "backtrace file",
+          "line": 10,
+          "function": "backtrace function"
+        }
+      ]
+    }
+  ],
+  "context": {
+    "notifier": {
+      "name": "notifier name",
+      "version": "notifier version",
+      "url": "notifier url"
+    },
+    "os": "Linux 3.5.0-21-generic #32-Ubuntu SMP Tue Dec 11 18:51:59 UTC 2012 x86_64",
+    "hostname": "production-rails-server-1",
+    "language": "Ruby 2.1.1",
+    "environment": "production",
+    "severity": "error",
+
+    "version": "1.1.1",
+    "url:": "http://some-site.com/example",
+    "rootDirectory": "/home/app-root-directory",
+
+    "user": {
+      "id": "12345",
+      "name": "root",
+      "email": "root@root.com"
+    },
+
+    "route": "/pricing",
+    "httpMethod": "POST"
+  },
+  "environment": {
+    "PORT": "443",
+    "CODE_NAME": "gorilla"
+  },
+  "session": {
+    "basketId": "123",
+    "userId": "456"
+  },
+  "params": {
+    "page": "3",
+    "sort": "name",
+    "direction": "asc"
+  }
+}
