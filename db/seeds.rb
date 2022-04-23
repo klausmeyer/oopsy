@@ -8,8 +8,12 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-Notice.first_or_create!(
+return if Notice.any?
+
+notice = Notice.create!(
   raw: JSON.parse(
     File.read(Rails.root.join("spec/fixtures/files/airbrake/create-notice-v3-request-body.json"))
   )
 )
+
+Notices::ParseRawDataJob.perform_now(notice)

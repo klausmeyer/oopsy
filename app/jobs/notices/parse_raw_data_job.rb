@@ -4,12 +4,21 @@ class Notices::ParseRawDataJob < ApplicationJob
   def perform(notice)
     self.notice = notice
 
+    parse_data
     parse_errors
   end
 
   private
 
   attr_accessor :notice
+
+  def parse_data
+    %w(context environment session params).each do |key|
+      notice.public_send("#{key}=", notice.raw[key])
+    end
+    
+    notice.save!
+  end
 
   def parse_errors
     Array.wrap(notice.raw["errors"]).each do |error|

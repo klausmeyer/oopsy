@@ -25,7 +25,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_23_171226) do
   end
 
   create_table "notices", force: :cascade do |t|
-    t.json "raw"
+    t.json "context"
+    t.json "environment"
+    t.json "session"
+    t.json "params"
+    t.json "raw", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
