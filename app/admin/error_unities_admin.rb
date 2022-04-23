@@ -37,6 +37,10 @@ Trestle.resource(:error_unities) do
 
   form do |error_unity|
     tab :error_unity do
+      text_field :error_type, readonly: true
+      text_field :error_message, readonly: true
+      datetime_field :created_at, readonly: true, disabled: true
+      datetime_field :updated_at, readonly: true, disabled: true
     end
 
     tab :error_occurrences, badge: error_unity.error_occurrences.count do

@@ -58,10 +58,6 @@ Trestle.resource(:notices) do
         column :created_at
       end
     end
-
-    tab :debug do
-      json :raw, readonly: true
-    end
   end
 
   # By default, all parameters passed to the update and create actions will be
