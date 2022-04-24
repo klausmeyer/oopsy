@@ -21,6 +21,7 @@ Trestle.resource(:error_unities) do
     column :project
     column :error_type
     column :error_message
+    column :number_of_occurrences, ->(error_unity) { error_unity.error_occurrences.count }
     column :created_at
   end
 
