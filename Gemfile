@@ -53,6 +53,9 @@ gem "sassc-rails"
 # Admin UI: https://github.com/TrestleAdmin/trestle
 gem "trestle", "~> 0.9"
 
+# Admin UI Auth: https://github.com/TrestleAdmin/trestle-auth
+gem "trestle-auth", "~> 0.4"
+
 # Syntax Highlighter: https://github.com/rouge-ruby/rouge
 gem "rouge", "~> 0.5"
 

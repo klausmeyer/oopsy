@@ -8,7 +8,13 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-project = Project.create_or_find_by!(name: "Demo Project")
+User.find_or_create_by!(email: "admin@example.com") do |u|
+  u.first_name = "Admin"
+  u.last_name  = "User"
+  u.password   = "password"
+end
+
+project = Project.find_or_create_by!(name: "Demo Project")
 
 return if Notice.any?
 

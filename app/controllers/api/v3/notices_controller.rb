@@ -10,7 +10,7 @@ module Api
       def notice_response
         {
           id:  notice.id,
-          url: web_routes.notices_admin_url(notice)
+          url: trestle.notices_admin_url(notice)
         }
       end
 

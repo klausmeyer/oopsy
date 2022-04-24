@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   root to: redirect("/web")
 
-  mount Trestle::Engine, at: "/web", as: :web_routes
+  mount Trestle::Engine, at: "/web"
 
   get :ping, to: ->(env) { ["200", {"Content-Type" => "text/plain"}, ["pong"]] }
 
