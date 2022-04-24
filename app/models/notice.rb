@@ -8,6 +8,24 @@ class Notice < ApplicationRecord
 
   validates :project, presence: true
 
+  def action
+    return if context.nil?
+
+    context["action"]
+  end
+
+  def component
+    return if context.nil?
+
+    context["component"]
+  end
+
+  def hostname
+    return if context.nil?
+
+    context["hostname"]
+  end
+
   private
 
   def generate_defaults
