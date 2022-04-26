@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_24_195712) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_26_194455) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -34,6 +34,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_24_195712) do
     t.string "error_message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["error_type", "error_message"], name: "index_error_unities_on_error_type_and_error_message"
     t.index ["project_id"], name: "index_error_unities_on_project_id"
   end
 
