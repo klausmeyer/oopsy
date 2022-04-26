@@ -59,6 +59,9 @@ gem "trestle-auth", "~> 0.4"
 # Syntax Highlighter: https://github.com/rouge-ruby/rouge
 gem "rouge", "~> 0.5"
 
+# Background Jobs: https://github.com/mperham/sidekiq
+gem "sidekiq", "~> 6.4"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[mri mingw x64_mingw]
