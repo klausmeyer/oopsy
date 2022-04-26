@@ -39,11 +39,16 @@ Trestle.resource(:error_occurrences) do
   # end
 
   form do |error_occurrence|
-    text_field :error_type, readonly: true, disabled: true
-    text_field :error_message, readonly: true, disabled: true
-    json :backtrace, readonly: true, disabled: true
-    datetime_field :created_at, readonly: true, disabled: true
-    datetime_field :updated_at, readonly: true, disabled: true
+    tab :error_occurrence do
+      text_field :error_type, readonly: true, disabled: true
+      text_field :error_message, readonly: true, disabled: true
+      datetime_field :created_at, readonly: true, disabled: true
+      datetime_field :updated_at, readonly: true, disabled: true
+    end
+
+    tab :backtrace do
+      backtrace :backtrace, readonly: true, disabled: true
+    end
   end
 
   # By default, all parameters passed to the update and create actions will be

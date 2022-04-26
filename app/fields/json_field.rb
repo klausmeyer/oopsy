@@ -2,8 +2,8 @@ class JsonField < Trestle::Form::Field
   def field
     raise NotImplemented unless readonly?
 
-    Rouge::Formatters::HTML.new.format(
-      Rouge::Lexers::JSON.new.lex(
+    Rouge::Formatters::HTML.format(
+      Rouge::Lexers::JSON.lex(
         pretty_json
       )
     ).html_safe

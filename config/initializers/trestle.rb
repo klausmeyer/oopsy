@@ -257,6 +257,7 @@ end
 
 Rails.application.config.to_prepare do
   Trestle.configure do |config|
+    config.form_field :backtrace, BacktraceField
     config.form_field :json, JsonField
   end
 end
