@@ -9,7 +9,7 @@ module RackServer
       Rack::Handler::Puma.run(
         Rails.application,
         Host:      "127.0.0.1",
-        Port:      3000,
+        Port:      4000,
         Threads:   "0:4",
         Workers:   0,
         Daemonize: false,
@@ -21,7 +21,7 @@ module RackServer
   def local_server_wait
     Timeout.timeout(5) do
       loop do
-        Net::HTTP.get(URI("http://127.0.0.1:3000/ping"))
+        Net::HTTP.get(URI("http://127.0.0.1:4000/ping"))
         break
       rescue Errno::EADDRNOTAVAIL
         sleep 1

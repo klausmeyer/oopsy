@@ -12,7 +12,7 @@ RSpec.describe "Airbrake compatibility" do
     project = FactoryBot.create :project
 
     Airbrake.configure do |c|
-      c.host          = "http://127.0.0.1:3000"
+      c.host          = "http://127.0.0.1:4000"
       c.project_id    = project.id
       c.project_key   = project.api_key
       c.remote_config = false
