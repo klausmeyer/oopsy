@@ -16,7 +16,7 @@ class BacktraceField < Trestle::Form::Field
 
         entry["code"].each do |line, code|
           output << "<tr>".html_safe
-          output << content_tag(:td, style: "vertical-align: top; font-size: small") { line }
+          output << content_tag(:td, style: "text-align: right; vertical-align: top; font-size: small") { line }
           output << content_tag(:td) { highlight(code, entry["file"].split(".").last) }
           output << "</tr>".html_safe
         end
