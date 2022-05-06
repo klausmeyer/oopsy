@@ -74,6 +74,9 @@ group :development, :test do
 
   # Ruby style guide, linter, and formatter: https://github.com/testdouble/standard
   gem "standard", "~> 1.10"
+
+  # Code coverage: https://github.com/simplecov-ruby/simplecov
+  gem "simplecov", "~> 0.21.2", require: false
 end
 
 group :development do
