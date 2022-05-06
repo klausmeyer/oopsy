@@ -5,7 +5,7 @@ Trestle.resource(:notices) do
   remove_action :update
 
   menu do
-    item :notices, icon: "fa fa-bell", priority: 4
+    item :notices, icon: "fa fa-bell", priority: 1
   end
 
   table do
