@@ -4,6 +4,12 @@ Trestle.resource(:notices) do
   remove_action :destroy
   remove_action :update
 
+  scopes do
+    scope :received
+    scope :parsed, default: true
+    scope :acknowledged
+  end
+
   menu do
     item :notices, icon: "fa fa-bell", priority: 1
   end
@@ -16,6 +22,9 @@ Trestle.resource(:notices) do
     column :action, ->(notice) { notice.action }
     column :host, ->(notice) { notice.hostname }
     column :number_of_errors, ->(notice) { notice.error_occurrences.count }
+    column :state do |notice|
+      status_tag(notice.state)
+    end
     column :created_at
   end
 

@@ -6,6 +6,8 @@ class Notices::ParseRawDataJob < ApplicationJob
 
     parse_data
     parse_errors
+
+    notice.parsed!
   end
 
   private

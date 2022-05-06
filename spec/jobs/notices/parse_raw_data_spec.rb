@@ -18,6 +18,8 @@ RSpec.describe Notices::ParseRawDataJob do
         "function" => "backtrace function",
         "line"     => 10
       ]
+
+      expect(notice.reload.state).to eq "parsed"
     end
   end
 end

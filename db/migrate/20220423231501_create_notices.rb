@@ -3,6 +3,7 @@ class CreateNotices < ActiveRecord::Migration[7.0]
     create_table :notices do |t|
       t.string :uuid
       t.references :project, null: false
+      t.string :state, null: false, default: Notice.aasm.initial_state
       t.json :context
       t.json :environment
       t.json :session

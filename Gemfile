@@ -50,6 +50,9 @@ gem "sassc-rails"
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
+# State machine: https://github.com/aasm/aasm
+gem "aasm", "~> 5.2.0"
+
 # Admin UI: https://github.com/TrestleAdmin/trestle
 gem "trestle", "~> 0.9"
 

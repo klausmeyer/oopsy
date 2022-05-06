@@ -41,6 +41,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_26_194455) do
   create_table "notices", force: :cascade do |t|
     t.string "uuid"
     t.bigint "project_id", null: false
+    t.string "state", default: "received", null: false
     t.json "context"
     t.json "environment"
     t.json "session"

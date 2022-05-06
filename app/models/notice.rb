@@ -1,4 +1,6 @@
 class Notice < ApplicationRecord
+  include AASM
+
   belongs_to :project
   has_many :error_occurrences
 
@@ -7,6 +9,20 @@ class Notice < ApplicationRecord
   default_scope { order(id: :desc) }
 
   validates :project, presence: true
+
+  aasm column: :state do
+    state :received, initial: true
+    state :parsed
+    state :acknowledged
+
+    event :parsed do
+      transitions from: :received, to: :parsed
+    end
+
+    event :acknowledge do
+      transitions from: :parsed, to: :acknowledged
+    end
+  end
 
   def action
     return if context.nil?
