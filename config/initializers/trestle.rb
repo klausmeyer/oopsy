@@ -97,6 +97,8 @@ Trestle.configure do |config|
     content_tag :style, type: "text/css" do
       Rouge::Themes::Github.render(scope: ".highlight").html_safe
     end
+
+    stylesheet_link_tag "admin"
   end
 
   # Toggle whether Turbolinks is enabled within the admin.
