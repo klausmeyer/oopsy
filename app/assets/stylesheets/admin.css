@@ -1,7 +1,15 @@
+.backtrace {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
 .line-number {
   font-size: small;
   text-align: right;
   vertical-align: top;
-  padding-right: 10px;
   width: 80px;
+}
+
+.highlight {
+  margin-bottom: 0.5rem;
 }

@@ -12,12 +12,12 @@ class BacktraceField < Trestle::Form::Field
       output << "</pre>".html_safe
 
       if entry.has_key?("code")
-        output << "<table width='100%'>".html_safe
+        output << "<table class='backtrace'>".html_safe
 
         entry["code"].each do |line, code|
           output << "<tr>".html_safe
           output << content_tag(:td, class: "line-number") { line }
-          output << content_tag(:td) { highlight(code, entry["file"].split(".").last) }
+          output << content_tag(:td, class: "line-code") { highlight(code, entry["file"].split(".").last) }
           output << "</tr>".html_safe
         end
 
@@ -46,6 +46,6 @@ class BacktraceField < Trestle::Form::Field
   end
 
   def pre_tag(text)
-    %(<pre class="hightlight">#{text}</pre>).html_safe
+    %(<pre class="highlight">#{text}</pre>).html_safe
   end
 end
