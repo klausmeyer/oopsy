@@ -4,6 +4,12 @@ Trestle.resource(:error_occurrences) do
   remove_action :destroy
   remove_action :update
 
+  scopes do
+    Project.by_name.each do |p|
+      scope p.id, -> { ErrorOccurrence.where(project: p) }, label: p.name, group: "Project"
+    end
+  end
+
   menu do
     item :error_occurrences, icon: "fa fa-exclamation-circle", priority: 3
   end

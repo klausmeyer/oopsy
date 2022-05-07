@@ -5,9 +5,13 @@ Trestle.resource(:notices) do
   remove_action :update
 
   scopes do
-    scope :received
-    scope :parsed, default: true
-    scope :acknowledged
+    scope :received,     group: "State"
+    scope :parsed,       group: "State", default: true
+    scope :acknowledged, group: "State"
+
+    Project.by_name.each do |p|
+      scope p.id, -> { Notice.where(project: p) }, label: p.name, group: "Project"
+    end
   end
 
   menu do

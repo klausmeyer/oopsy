@@ -16,14 +16,16 @@ User.find_or_create_by!(email: "admin@example.com") do |u|
   u.password   = "password"
 end
 
-project = Project.find_or_create_by!(name: "Demo Project")
-
 return if Notice.any?
 
-5.times do
-  Notices::CreateFromRaw.new(
-    project: project,
-    raw:     File.read(Rails.root.join("spec/fixtures/files/airbrake/create-notice-v3-request-body.json")),
-    async:   false
-  ).call
+3.times do |index|
+  project = Project.find_or_create_by!(name: "Demo Project #{index + 1}")
+
+  3.times do
+    Notices::CreateFromRaw.new(
+      project: project,
+      raw:     File.read(Rails.root.join("spec/fixtures/files/airbrake/create-notice-v3-request-body.json")),
+      async:   false
+    ).call
+  end
 end

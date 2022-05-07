@@ -4,6 +4,12 @@ Trestle.resource(:error_unities) do
   remove_action :destroy
   remove_action :update
 
+  scopes do
+    Project.by_name.each do |p|
+      scope p.id, -> { ErrorUnity.where(project: p) }, label: p.name, group: "Project"
+    end
+  end
+
   menu do
     item :error_unities, icon: "fa fa-bug", priority: 2
   end

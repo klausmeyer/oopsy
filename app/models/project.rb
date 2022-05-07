@@ -7,6 +7,10 @@ class Project < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :api_key, presence: true, uniqueness: true
 
+  def self.by_name
+    order(name: :asc)
+  end
+
   private
 
   def generate_defaults
