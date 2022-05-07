@@ -2,6 +2,12 @@
 
 Rails based error tracker with Airbrake compatible API
 
+## Screenshots
+
+[![Screenshot 1](docs/screenshot-1-thumb.png)](docs/screenshot-1.png)
+[![Screenshot 1](docs/screenshot-2-thumb.png)](docs/screenshot-2.png)
+[![Screenshot 1](docs/screenshot-3-thumb.png)](docs/screenshot-3.png)
+
 ## Dependencies
 
 * PostgreSQL Database
