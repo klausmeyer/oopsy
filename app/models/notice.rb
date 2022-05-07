@@ -22,6 +22,10 @@ class Notice < ApplicationRecord
     event :acknowledge do
       transitions from: :parsed, to: :acknowledged
     end
+
+    event :unacknowledge do
+      transitions from: :acknowledged, to: :parsed
+    end
   end
 
   def action

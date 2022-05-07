@@ -26,6 +26,15 @@ Trestle.resource(:notices) do
       status_tag(notice.state)
     end
     column :created_at
+
+    actions do |toolbar, instance, admin|
+      case instance.state.to_sym
+      when :parsed
+        toolbar.link "Acknowledge", instance, action: :acknowledge, method: :put, style: :success, icon: "fa fa-check"
+      when :acknowledged
+        toolbar.link "Un-Acknowledge", instance, action: :unacknowledge, method: :put, style: :danger, icon: "fa fa-undo"
+      end
+    end
   end
 
   form do |notice|
@@ -51,5 +60,34 @@ Trestle.resource(:notices) do
         column :created_at
       end
     end
+  end
+
+  controller do
+    def acknowledge
+      notice.acknowledge!
+
+      flash[:message] = "Notice has been acknowledged"
+
+      redirect_to admin.path(:index)
+    end
+
+    def unacknowledge
+      notice.unacknowledge!
+
+      flash[:message] = "Notice has been un-acknowledged"
+
+      redirect_to admin.path(:index, scope: :acknowledged)
+    end
+
+    private
+
+    def notice
+      @notice ||= admin.find_instance(params)
+    end
+  end
+
+  routes do
+    put :acknowledge, on: :member
+    put :unacknowledge, on: :member
   end
 end
