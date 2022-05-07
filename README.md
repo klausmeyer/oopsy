@@ -1,6 +1,6 @@
 # Oopsy
 
-Rails based error tracker with Airbrake compatible API
+Rails based error tracker with [Airbrake compatible API](https://airbrake.io/docs/api/#create-notice-v3)
 
 ## Screenshots
 
@@ -36,3 +36,7 @@ Make sure to have all requirements in place before the first deployment (See Dep
 ### Kubernetes
 
 Coming soon
+
+## License
+
+The application is available as open source under the terms of the MIT License.
