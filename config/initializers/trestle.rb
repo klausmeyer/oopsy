@@ -256,6 +256,8 @@ end
 
 Rails.application.config.to_prepare do
   Trestle.configure do |config|
+    config.footer = "Oopsy · Version #{Rails.application.config.x.version}"
+
     config.form_field :backtrace, BacktraceField
     config.form_field :json, JsonField
   end

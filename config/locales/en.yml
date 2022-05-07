@@ -31,3 +31,6 @@
 
 en:
   hello: "Hello world"
+
+  trestle:
+    version: "Powered by Trestle · Version"
