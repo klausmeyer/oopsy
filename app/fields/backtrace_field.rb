@@ -39,12 +39,13 @@ class BacktraceField < Trestle::Form::Field
   end
 
   def highlight(text, language)
-    return "<pre class=hightlight>&nbsp;</pre>".html_safe if text.blank?
+    return pre_tag("&nbsp;") if text.blank?
+    return pre_tag(text) if (lexer = Rouge::Lexer.find(language)).nil?
 
-    Rouge::Formatters::HTML.format(
-      Rouge::Lexer.find(language).lex(
-        text
-      )
-    ).html_safe
+    Rouge::Formatters::HTML.format(lexer.lex(text)).html_safe
+  end
+
+  def pre_tag(text)
+    %(<pre class="hightlight">#{text}</pre>).html_safe
   end
 end
