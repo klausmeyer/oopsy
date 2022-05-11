@@ -8,6 +8,8 @@ class Notices::ParseRawDataJob < ApplicationJob
     parse_errors
 
     notice.parsed!
+
+    Errors::CollectErrorUnitiesJob.perform_later
   end
 
   private

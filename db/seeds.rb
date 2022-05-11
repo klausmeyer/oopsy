@@ -24,8 +24,7 @@ return if Notice.any?
   3.times do
     Notices::CreateFromRaw.new(
       project: project,
-      raw:     File.read(Rails.root.join("spec/fixtures/files/airbrake/create-notice-v3-request-body.json")),
-      async:   false
+      raw:     File.read(Rails.root.join("spec/fixtures/files/airbrake/create-notice-v3-request-body.json"))
     ).call
   end
 end

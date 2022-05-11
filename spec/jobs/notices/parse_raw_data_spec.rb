@@ -21,5 +21,11 @@ RSpec.describe Notices::ParseRawDataJob do
 
       expect(notice.reload.state).to eq "parsed"
     end
+
+    it "enqueues a follow-up job to create unities" do
+      ActiveJob::Base.queue_adapter = :test
+
+      expect { job.perform(notice) }.to have_enqueued_job Errors::CollectErrorUnitiesJob
+    end
   end
 end
