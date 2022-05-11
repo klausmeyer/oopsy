@@ -2,11 +2,13 @@ class JsonField < Trestle::Form::Field
   def field
     raise NotImplemented unless readonly?
 
-    Rouge::Formatters::HTML.format(
-      Rouge::Lexers::JSON.lex(
-        pretty_json
-      )
-    ).html_safe
+    content_tag :pre, class: "highlight" do
+      Rouge::Formatters::HTML.format(
+        Rouge::Lexers::JSON.lex(
+          pretty_json
+        )
+      ).html_safe
+    end
   end
 
   private
