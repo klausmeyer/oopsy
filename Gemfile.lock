@@ -285,7 +285,7 @@ DEPENDENCIES
   importmap-rails
   pg (~> 1.1)
   puma (~> 5.0)
-  rails (~> 7.0.2, >= 7.0.2.3)
+  rails (~> 7.0.3)
   rouge (~> 0.5)
   rspec-rails (~> 5.1)
   sassc-rails
