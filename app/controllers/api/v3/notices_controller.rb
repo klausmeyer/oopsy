@@ -22,9 +22,7 @@ module Api
       end
 
       def project
-        @project ||= Project.find(params[:project_id]).tap do |p|
-          raise UnauthorizedError unless p.api_key == api_key
-        end
+        @project ||= Project.find_by(api_key: api_key) or raise UnauthorizedError
       end
 
       def api_key
