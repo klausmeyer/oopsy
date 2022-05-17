@@ -6,7 +6,7 @@ Trestle.resource(:error_occurrences) do
 
   scopes do
     Project.by_name.each do |p|
-      scope p.id, -> { ErrorOccurrence.where(project: p) }, label: p.name, group: "Project"
+      scope p.name, -> { ErrorOccurrence.where(project: p) }, label: p.name, group: "Project"
     end
   end
 

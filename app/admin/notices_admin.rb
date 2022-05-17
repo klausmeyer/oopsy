@@ -10,7 +10,7 @@ Trestle.resource(:notices) do
     scope :acknowledged, group: "State"
 
     Project.by_name.each do |p|
-      scope p.id, -> { Notice.where(project: p) }, label: p.name, group: "Project"
+      scope p.name, -> { Notice.where(project: p) }, label: p.name, group: "Project"
     end
   end
 

@@ -6,7 +6,7 @@ Trestle.resource(:error_unities) do
 
   scopes do
     Project.by_name.each do |p|
-      scope p.id, -> { ErrorUnity.where(project: p) }, label: p.name, group: "Project"
+      scope p.name, -> { ErrorUnity.where(project: p) }, label: p.name, group: "Project"
     end
   end
 
