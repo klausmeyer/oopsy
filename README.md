@@ -4,9 +4,9 @@ Rails based error tracker with [Airbrake compatible API](https://airbrake.io/doc
 
 ## Screenshots
 
-[![Screenshot 1](docs/screenshot-1-thumb.png)](docs/screenshot-1.png)
-[![Screenshot 1](docs/screenshot-2-thumb.png)](docs/screenshot-2.png)
-[![Screenshot 1](docs/screenshot-3-thumb.png)](docs/screenshot-3.png)
+[![Screenshot 1](https://github.com/klausmeyer/oopsy/raw/master/_docs/screenshot-1-thumb.png)](https://github.com/klausmeyer/oopsy/raw/master/_docs/screenshot-1.png)
+[![Screenshot 1](https://github.com/klausmeyer/oopsy/raw/master/_docs/screenshot-2-thumb.png)](https://github.com/klausmeyer/oopsy/raw/master/_docs/screenshot-2.png)
+[![Screenshot 1](https://github.com/klausmeyer/oopsy/raw/master/_docs/screenshot-3-thumb.png)](https://github.com/klausmeyer/oopsy/raw/master/_docs/screenshot-3.png)
 
 ## Dependencies
 
@@ -33,9 +33,15 @@ The application is ready to be deployed on Heroku.
 
 Make sure to have all requirements in place before the first deployment (See Dependencies).
 
-### Kubernetes
+### Docker / Kubernetes
 
-Coming soon
+There is an official Docker image available at [klausmeyer/oopsy](https://hub.docker.com/r/klausmeyer/oopsy) on Docker Hub:
+
+```shell
+$ docker pull klausmeyer/oopsy:latest
+```
+
+The source to build a helm-chart can be found in the `_deploy/helm/oopsy` folder of this repository.
 
 ## License
 
