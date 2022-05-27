@@ -1,6 +1,0 @@
-apiVersion: v2
-type: application
-name: oopsy
-description: Rails based error tracker
-version: "1.0.0-dev"
-appVersion: "1.0.0-dev"

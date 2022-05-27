@@ -35,13 +35,13 @@ Make sure to have all requirements in place before the first deployment (See Dep
 
 ### Docker / Kubernetes
 
-There is an official Docker image available at [klausmeyer/oopsy](https://hub.docker.com/r/klausmeyer/oopsy) on Docker Hub:
+An official Docker image is available at [klausmeyer/oopsy](https://hub.docker.com/r/klausmeyer/oopsy) on Docker Hub:
 
 ```shell
 $ docker pull klausmeyer/oopsy:latest
 ```
 
-The source to build a helm-chart can be found in the `_deploy/helm/oopsy` folder of this repository.
+Also there is a helm-chart available at [klausmeyer/helm-charts](https://github.com/klausmeyer/helm-charts/tree/master/charts/oopsy).
 
 ## License
 
