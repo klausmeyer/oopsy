@@ -60,7 +60,7 @@ gem "trestle", "~> 0.9"
 gem "trestle-auth", "~> 0.4"
 
 # Syntax Highlighter: https://github.com/rouge-ruby/rouge
-gem "rouge", "~> 3.28"
+gem "rouge", "~> 4.0"
 
 # Background Jobs: https://github.com/mperham/sidekiq
 gem "sidekiq", "~> 6.4"
