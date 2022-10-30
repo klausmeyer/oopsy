@@ -63,7 +63,7 @@ gem "trestle-auth", "~> 0.4"
 gem "rouge", "~> 4.0"
 
 # Background Jobs: https://github.com/mperham/sidekiq
-gem "sidekiq", "~> 6.4"
+gem "sidekiq", "~> 7.0"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
