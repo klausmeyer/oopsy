@@ -5,7 +5,12 @@ set -e
 case "$1" in
 
   web)
-    exec puma -C config/puma.rb
+    exec bundle exec puma -C config/puma.rb
+    ;;
+
+  sidekiq)
+    shift
+    exec bundle exec sidekiq $@
     ;;
 
   *)
