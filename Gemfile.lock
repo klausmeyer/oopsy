@@ -236,7 +236,7 @@ GEM
       connection_pool (>= 2.3.0)
       rack (>= 2.2.4)
       redis-client (>= 0.11.0)
-    simplecov (0.21.2)
+    simplecov (0.22.0)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
       simplecov_json_formatter (~> 0.1)
@@ -297,7 +297,7 @@ DEPENDENCIES
   rspec-rails (~> 6.0)
   sassc-rails
   sidekiq (~> 7.0)
-  simplecov (~> 0.21.2)
+  simplecov (~> 0.22.0)
   sprockets-rails
   standard (~> 1.10)
   stimulus-rails
