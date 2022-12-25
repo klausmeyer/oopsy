@@ -79,7 +79,7 @@ group :development, :test do
   gem "standard", "~> 1.10"
 
   # Code coverage: https://github.com/simplecov-ruby/simplecov
-  gem "simplecov", "~> 0.21.2", require: false
+  gem "simplecov", "~> 0.22.0", require: false
 end
 
 group :development do
