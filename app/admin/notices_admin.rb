@@ -25,7 +25,7 @@ Trestle.resource(:notices) do
     column :component, ->(notice) { notice.component }
     column :action, ->(notice) { notice.action }
     column :host, ->(notice) { notice.hostname }
-    column :number_of_errors, ->(notice) { notice.error_occurrences.count }
+    column :number_of_errors, ->(notice) { notice.reported_errors.count }
     column :state do |notice|
       status_tag(notice.state)
     end
@@ -52,8 +52,8 @@ Trestle.resource(:notices) do
       datetime_field :updated_at, readonly: true, disabled: true
     end
 
-    tab :error_occurrences, badge: notice.error_occurrences.count do
-      table notice.error_occurrences, admin: :error_occurrences do
+    tab :errors, badge: notice.errors.count do
+      table notice.errors, admin: :errors do
         column :id
         column :project
         column :notice do
