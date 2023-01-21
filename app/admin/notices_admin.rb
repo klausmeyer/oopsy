@@ -21,7 +21,6 @@ Trestle.resource(:notices) do
   table do
     column :id
     column :project
-    column :uuid, ->(notice) { notice.uuid[0, 7] }
     column :component, ->(notice) { notice.component }
     column :action, ->(notice) { notice.action }
     column :host, ->(notice) { notice.hostname }
@@ -52,13 +51,10 @@ Trestle.resource(:notices) do
       datetime_field :updated_at, readonly: true, disabled: true
     end
 
-    tab :errors, badge: notice.errors.count do
-      table notice.errors, admin: :errors do
+    tab :errors, badge: notice.reported_errors.count do
+      table notice.reported_errors, admin: :errors do
         column :id
         column :project
-        column :notice do
-          link_to "Notice (#{notice.uuid[0, 7]})", notices_admin_path(notice)
-        end
         column :error_type
         column :error_message
         column :created_at

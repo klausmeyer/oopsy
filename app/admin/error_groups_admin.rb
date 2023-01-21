@@ -34,7 +34,7 @@ Trestle.resource(:error_groups) do
         column :id
         column :project
         column :notice do |error|
-          link_to "Notice (#{error.notice.uuid[0, 7]})", notices_admin_path(error.notice)
+          link_to "Notice##{error.notice_id}", notices_admin_path(error.notice)
         end
         column :error_type
         column :error_message
