@@ -93,6 +93,8 @@ GEM
     ffi (1.15.5)
     globalid (1.0.1)
       activesupport (>= 5.0)
+    health_check (3.1.0)
+      railties (>= 5.0)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     importmap-rails (1.1.5)
@@ -181,6 +183,7 @@ GEM
     rainbow (3.1.1)
     rake (13.0.6)
     rbtree3 (0.7.0)
+    redis (4.8.0)
     redis-client (0.12.0)
       connection_pool
     regexp_parser (2.6.2)
@@ -287,10 +290,12 @@ DEPENDENCIES
   bootsnap
   debug
   factory_bot_rails (~> 6.2)
+  health_check (~> 3.1)
   importmap-rails
   pg (~> 1.1)
   puma (~> 6.0)
   rails (~> 7.0.3)
+  redis (~> 4.0)
   rouge (~> 4.0)
   rspec-rails (~> 6.0)
   sassc-rails
