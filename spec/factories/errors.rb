@@ -1,6 +1,6 @@
 FactoryBot.define do
-  factory :error_unity do
-    project
+  factory :error do
+    notice
     error_type { "ErrorType" }
     error_message { "Error Message" }
   end

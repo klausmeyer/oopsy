@@ -2,7 +2,7 @@ class Notice < ApplicationRecord
   include AASM
 
   belongs_to :project
-  has_many :error_occurrences
+  has_many :reported_errors, class_name: "Error"
 
   after_initialize :generate_defaults, if: :new_record?
 

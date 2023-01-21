@@ -9,7 +9,7 @@ class Notices::ParseRawDataJob < ApplicationJob
 
     notice.parsed!
 
-    Errors::CollectErrorUnitiesJob.perform_later
+    Errors::GroupJob.perform_later
   end
 
   private
@@ -26,8 +26,7 @@ class Notices::ParseRawDataJob < ApplicationJob
 
   def parse_errors
     Array.wrap(notice.raw["errors"]).each do |error|
-      notice.error_occurrences.create!(
-        project:       notice.project,
+      notice.reported_errors.create!(
         error_type:    error["type"],
         error_message: error["message"],
         backtrace:     error["backtrace"]

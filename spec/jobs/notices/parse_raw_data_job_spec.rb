@@ -7,9 +7,9 @@ RSpec.describe Notices::ParseRawDataJob do
 
   describe "#perform" do
     it "parses the raw json and creates errors from it" do
-      expect { job.perform(notice) }.to change { notice.error_occurrences.count }.from(0).to(2)
+      expect { job.perform(notice) }.to change { notice.reported_errors.count }.from(0).to(2)
 
-      error = notice.error_occurrences.last
+      error = notice.reported_errors.last
       expect(error.error_type).to eq "error1"
       expect(error.error_message).to eq "message1"
       expect(error.backtrace).to eq [
@@ -22,10 +22,10 @@ RSpec.describe Notices::ParseRawDataJob do
       expect(notice.reload.state).to eq "parsed"
     end
 
-    it "enqueues a follow-up job to create unities" do
+    it "enqueues a follow-up job to create groups" do
       ActiveJob::Base.queue_adapter = :test
 
-      expect { job.perform(notice) }.to have_enqueued_job Errors::CollectErrorUnitiesJob
+      expect { job.perform(notice) }.to have_enqueued_job Errors::GroupJob
     end
   end
 end
