@@ -1,3 +1,4 @@
+require "rackup"
 require "rack/handler/puma"
 
 require "net/http"
@@ -6,7 +7,7 @@ require "timeout"
 module RackServer
   def local_server_start
     Thread.new do
-      Rack::Handler::Puma.run(
+      Rackup::Handler::Puma.run(
         Rails.application,
         Host:      "127.0.0.1",
         Port:      4000,
