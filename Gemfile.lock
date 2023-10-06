@@ -328,9 +328,9 @@ DEPENDENCIES
   health_check (~> 3.1)
   importmap-rails
   pg (~> 1.1)
-  puma (~> 6.0)
+  puma (>= 5.0)
   rails (~> 7.1.0)
-  redis (~> 5.0)
+  redis (>= 4.0.1)
   rouge (~> 4.0)
   rspec-rails (~> 6.0)
   sassc-rails
@@ -347,4 +347,4 @@ RUBY VERSION
    ruby 3.2.2
 
 BUNDLED WITH
-   2.4.1
+   2.4.20
