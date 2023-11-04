@@ -262,7 +262,6 @@ Rails.application.config.to_prepare do
   end
 end
 
-unless Rails.env.production?
-  Trestle::Engine.routes.default_url_options[:host] = "localhost"
-  Trestle::Engine.routes.default_url_options[:port] = "3000"
-end
+Trestle::Engine.routes.default_url_options[:protocol] = ENV["PUBLIC_SCHEME"] || "http"
+Trestle::Engine.routes.default_url_options[:host]     = ENV["PUBLIC_HOST"]   || "localhost"
+Trestle::Engine.routes.default_url_options[:port]     = ENV["PUBLIC_PORT"]   || "3000"
