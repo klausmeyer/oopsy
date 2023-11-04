@@ -261,3 +261,7 @@ Rails.application.config.to_prepare do
     config.form_field :json, JsonField
   end
 end
+
+Trestle::Engine.routes.default_url_options[:protocol] = ENV["PUBLIC_SCHEME"] || "http"
+Trestle::Engine.routes.default_url_options[:host]     = ENV["PUBLIC_HOST"]   || "localhost"
+Trestle::Engine.routes.default_url_options[:port]     = ENV["PUBLIC_PORT"]   || "3000"

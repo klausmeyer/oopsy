@@ -6,10 +6,8 @@ class Notices::ParseRawDataJob < ApplicationJob
 
     parse_data
     parse_errors
-
-    notice.parsed!
-
-    Errors::GroupJob.perform_later
+    group_errors
+    execute_webhooks
   end
 
   private
@@ -32,5 +30,17 @@ class Notices::ParseRawDataJob < ApplicationJob
         backtrace:     error["backtrace"]
       )
     end
+
+    notice.parsed!
+  end
+
+  def group_errors
+    Errors::GroupJob.perform_later
+  end
+
+  def execute_webhooks
+    return unless Notices::Webhooks.enabled?
+
+    Notices::ExecuteWebhooksJob.perform_later(notice)
   end
 end

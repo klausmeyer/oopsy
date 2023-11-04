@@ -76,6 +76,8 @@ GEM
       minitest (>= 5.1)
       mutex_m
       tzinfo (~> 2.0)
+    addressable (2.8.5)
+      public_suffix (>= 2.0.2, < 6.0)
     airbrake-ruby (6.2.2)
       rbtree3 (~> 0.6)
     ast (2.4.2)
@@ -87,6 +89,8 @@ GEM
     builder (3.2.4)
     concurrent-ruby (1.2.2)
     connection_pool (2.4.1)
+    crack (0.4.5)
+      rexml
     crass (1.0.6)
     date (3.3.3)
     debug (1.8.0)
@@ -94,6 +98,10 @@ GEM
       reline (>= 0.3.1)
     diff-lcs (1.5.0)
     docile (1.4.0)
+    dotenv (2.8.1)
+    dotenv-rails (2.8.1)
+      dotenv (= 2.8.1)
+      railties (>= 3.2)
     drb (2.1.1)
       ruby2_keywords
     erubi (1.12.0)
@@ -102,9 +110,15 @@ GEM
     factory_bot_rails (6.2.0)
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
+    faraday (2.7.11)
+      base64
+      faraday-net_http (>= 2.0, < 3.1)
+      ruby2_keywords (>= 0.0.4)
+    faraday-net_http (3.0.2)
     ffi (1.15.5)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    hashdiff (1.0.1)
     health_check (3.1.0)
       railties (>= 5.0)
     i18n (1.14.1)
@@ -166,6 +180,7 @@ GEM
     pg (1.5.4)
     psych (5.1.1.1)
       stringio
+    public_suffix (5.0.3)
     puma (6.4.0)
       nio4r (~> 2.0)
     racc (1.7.1)
@@ -308,6 +323,10 @@ GEM
     trestle-auth (0.4.4)
       bcrypt (~> 3.1.7)
       trestle (~> 0.9.0, >= 0.9.3)
+    trestle-sidekiq (0.1.1)
+      sidekiq
+      trestle (~> 0.8)
+      trestle-auth (~> 0.2, >= 0.2.3)
     turbo-rails (1.5.0)
       actionpack (>= 6.0.0)
       activejob (>= 6.0.0)
@@ -315,6 +334,10 @@ GEM
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.5.0)
+    webmock (3.19.1)
+      addressable (>= 2.8.0)
+      crack (>= 0.3.2)
+      hashdiff (>= 0.4.0, < 2.0.0)
     webrick (1.8.1)
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
@@ -331,7 +354,9 @@ DEPENDENCIES
   airbrake-ruby (~> 6.1)
   bootsnap
   debug
+  dotenv-rails (~> 2.8)
   factory_bot_rails (~> 6.2)
+  faraday (~> 2.7)
   health_check (~> 3.1)
   importmap-rails
   pg (~> 1.1)
@@ -348,7 +373,9 @@ DEPENDENCIES
   stimulus-rails
   trestle (~> 0.9)
   trestle-auth (~> 0.4)
+  trestle-sidekiq (~> 0.1)
   turbo-rails
+  webmock (~> 3.19)
 
 RUBY VERSION
    ruby 3.2.2

@@ -27,5 +27,17 @@ RSpec.describe Notices::ParseRawDataJob do
 
       expect { job.perform(notice) }.to have_enqueued_job Errors::GroupJob
     end
+
+    context "when webhooks are enabled" do
+      before do
+        allow(Notices::Webhooks).to receive(:enabled?).and_return(true)
+      end
+
+      it "enqueues a follow-up job to execute a webhook" do
+        ActiveJob::Base.queue_adapter = :test
+
+        expect { job.perform(notice) }.to have_enqueued_job(Notices::ExecuteWebhooksJob).with(notice)
+      end
+    end
   end
 end

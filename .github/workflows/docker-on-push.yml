@@ -2,7 +2,7 @@ name: Docker (latest)
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, 'feat/**' ]
 
 jobs:
   build:
@@ -23,12 +23,18 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
+      - name: Prepare custom branch name
+        env:
+          branch: "${{ github.ref_name }}"
+        run: |
+          echo "DOCKER_TAG=${branch/\//-}" >> $GITHUB_ENV
+
       - name: Build and push Docker image
         uses: docker/build-push-action@v2.7.0
         with:
           context: .
           build-args: |
             SOURCE_COMMIT=${{ github.sha }}
-          tags: klausmeyer/oopsy:latest
+          tags: klausmeyer/oopsy:${{ github.ref_name == 'master' && 'latest' || env.DOCKER_TAG }}
           platforms: linux/amd64,linux/arm64,linux/arm/v7
           push: true
