@@ -65,9 +65,15 @@ gem "sidekiq", "~> 7.0"
 # Simple health check of Rails app: https://github.com/Purple-Devs/health_check
 gem "health_check", "~> 3.1"
 
+# Simple, but flexible HTTP client library, with support for multiple backends: https://github.com/lostisland/faraday
+gem "faraday", "~> 2.7"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
+
+  # A Ruby gem to load environment variables from `.env`: https://github.com/bkeepers/dotenv
+  gem "dotenv-rails", "~> 2.8"
 
   # Testing framework: https://github.com/rspec/rspec-rails
   gem "rspec-rails", "~> 6.0"
@@ -97,4 +103,7 @@ group :test do
   # A plain Ruby Airbrake notifier: https://github.com/airbrake/airbrake-ruby
   # Used for compatibility testing
   gem "airbrake-ruby", "~> 6.1"
+
+  # Library for stubbing and setting expectations on HTTP requests in Ruby: https://github.com/bblimke/webmock
+  gem "webmock", "~> 3.19"
 end

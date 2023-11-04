@@ -261,3 +261,8 @@ Rails.application.config.to_prepare do
     config.form_field :json, JsonField
   end
 end
+
+unless Rails.env.production?
+  Trestle::Engine.routes.default_url_options[:host] = "localhost"
+  Trestle::Engine.routes.default_url_options[:port] = "3000"
+end
