@@ -10,7 +10,7 @@ module Api
       def notice_response
         {
           id:  notice.id,
-          url: trestle.notices_admin_url(notice)
+          url: trestle.notices_admin_url(notice, default_url_options)
         }
       end
 
@@ -27,6 +27,10 @@ module Api
 
       def api_key
         request.headers["HTTP_AUTHORIZATION"]&.split(" ")&.last || params[:key]
+      end
+
+      def default_url_options
+        Trestle::Engine.routes.default_url_options
       end
     end
   end
