@@ -323,6 +323,10 @@ GEM
     trestle-auth (0.4.4)
       bcrypt (~> 3.1.7)
       trestle (~> 0.9.0, >= 0.9.3)
+    trestle-sidekiq (0.1.1)
+      sidekiq
+      trestle (~> 0.8)
+      trestle-auth (~> 0.2, >= 0.2.3)
     turbo-rails (1.5.0)
       actionpack (>= 6.0.0)
       activejob (>= 6.0.0)
@@ -369,6 +373,7 @@ DEPENDENCIES
   stimulus-rails
   trestle (~> 0.9)
   trestle-auth (~> 0.4)
+  trestle-sidekiq (~> 0.1)
   turbo-rails
   webmock (~> 3.19)
 
