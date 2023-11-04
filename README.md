@@ -19,17 +19,17 @@ Rails based error tracker with [Airbrake compatible API](https://airbrake.io/doc
 | -                          | -                                                 | -                                                 |
 | `DATABASE_URL`             | Connection info (URL) for the PostgreSQL database | `postgresql://user:password@server:5432/database` |
 | `FORCE_SSL`                | Enforce HTTPS on application level                | `true`                                            |
+| `PUBLIC_HOST`              | Hostname to use for public links                  | `oopsy.example.com`                               |
+| `PUBLIC_PORT`              | Port to use for public links                      | `443`                                             |
+| `PUBLIC_SCHEME`            | Scheme / protocol to use for public links         | `https`                                           |
 | `RAILS_ENV`                | Mode to run the application in                    | `production`                                      |
 | `REDIS_URL`                | Connection info (URL) for the Redis database      | `redis://username:password@server:6379/0`         |
 | `SECRET_KEY_BASE`          | Secret key used for signing and encryption        | `54a8a8bb94[...]`                                 |
+| `WEBHOOK_DISCORD_ENABLED`  | Flag to enable discord webhooks                   | `true`                                            |
+| `WEBHOOK_DISCORD_URL`      | URL to use for discord webhooks                   | `https://discord.com/api/webhooks/123/456`        |
+| `WEBHOOKS_ENABLED`         | Flag to enable webhooks in general                | `true`                                            |
 
 ## Deployment / Installation
-
-### Heroku
-
-The application is ready to be deployed on Heroku.
-
-Make sure to have all requirements in place before the first deployment (See Dependencies).
 
 ### Docker / Kubernetes
 
