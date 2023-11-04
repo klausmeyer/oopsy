@@ -3,9 +3,7 @@ require "rails_helper"
 RSpec.describe Notices::Webhooks do
   describe ".execute" do
     before do
-      allow(ENV).to receive(:[]).and_call_original
-      allow(ENV).to receive(:[]).with("WEBHOOK_DISCORD_ENABLED").and_return("true")
-
+      allow(described_class::Discord).to receive(:enabled?).and_return(true)
       allow(described_class::Discord).to receive(:new).with(notice).and_return(target_discord)
     end
 
