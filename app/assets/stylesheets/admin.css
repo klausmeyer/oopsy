@@ -13,3 +13,7 @@
 .highlight {
   margin-bottom: 0.5rem;
 }
+
+.current-line .highlight {
+  background-color: lightgoldenrodyellow;
+}

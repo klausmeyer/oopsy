@@ -17,8 +17,8 @@ class BacktraceField < Trestle::Form::Field
         entry["code"].each do |line, code|
           output << "<tr>".html_safe
           output << content_tag(:td, class: "line-number") { line }
-          output << content_tag(:td, class: "line-code") do
-            content_tag(:pre, class: "highlight") { highlight(code, entry["file"].split(".").last) }
+          output << content_tag(:td, class: {"line-code": true, "current-line": line.to_i == entry["line"]}) do
+            content_tag(:pre, class: "highlight") { highlight(code, entry["file"]) }
           end
           output << "</tr>".html_safe
         end
@@ -40,9 +40,10 @@ class BacktraceField < Trestle::Form::Field
     builder.object.public_send(name)
   end
 
-  def highlight(text, language)
+  def highlight(text, filename)
     return pre_tag("&nbsp;") if text.blank?
-    return pre_tag(text) if (lexer = Rouge::Lexer.find(language)).nil?
+
+    lexer = Rouge::Lexer.guess_by_filename(filename, &:first)
 
     Rouge::Formatters::HTML.format(lexer.lex(text)).html_safe
   end
