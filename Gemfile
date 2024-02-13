@@ -76,7 +76,7 @@ group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
 
   # A Ruby gem to load environment variables from `.env`: https://github.com/bkeepers/dotenv
-  gem "dotenv-rails", "~> 2.8"
+  gem "dotenv-rails", "~> 3.0"
 
   # Testing framework: https://github.com/rspec/rspec-rails
   gem "rspec-rails", "~> 6.0"
