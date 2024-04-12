@@ -1,6 +1,11 @@
 HealthCheck.setup do |config|
   config.uri             = "health"
   config.standard_checks = []
-  config.full_checks     = ["database", "migrations", "redis"]
+  config.full_checks     = ["database", "migrations", "redis", "postgres_write"]
   config.redis_password  = nil
+
+  config.add_custom_check("postgres_write") do
+    readonly = ActiveRecord::Base.connection.execute("SELECT pg_is_in_recovery() AS readonly").first.fetch("readonly", false)
+    readonly ? "Database is in read-only mode" : ""
+  end
 end
