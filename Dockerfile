@@ -1,6 +1,6 @@
 FROM ruby:3.3.1-alpine
 
-MAINTAINER Klaus Meyer <spam@klaus-meyer.net>
+LABEL maintainer="Klaus Meyer <spam@klaus-meyer.net>"
 
 ARG SOURCE_COMMIT
 ENV SOURCE_COMMIT $SOURCE_COMMIT
@@ -12,26 +12,31 @@ ENV RAILS_LOG_TO_STDOUT true
 
 EXPOSE $PORT
 
-WORKDIR /app
-
-ADD . .
+ENTRYPOINT ["/docker-entrypoint.sh"]
 
 RUN apk update \
  && apk add build-base zlib-dev tzdata git nodejs openssl-dev shared-mime-info postgresql-dev libc6-compat \
  && rm -rf /var/cache/apk/* \
- && gem install bundler -v $(tail -n1 Gemfile.lock | xargs) \
+ && mkdir -p /var/www/rails
+
+COPY Gemfile Gemfile.lock /var/www/rails/
+COPY docker-entrypoint.sh /docker-entrypoint.sh
+
+WORKDIR /var/www/rails/
+
+RUN gem install bundler -v $(grep -A1 "BUNDLED WITH" Gemfile.lock | tail -n1 | tr -d "[:space:]") \
  && bundle config set build.sassc "--disable-march-tune-native" \
  && bundle config set without "development test" \
- && bundle install \
- && SECRET_KEY_BASE="temporary-value" bundle exec rails assets:precompile \
- && addgroup -S app && adduser -S app -G app -h /app \
- && chown -R app.app /app \
- && chown -R app.app /usr/local/bundle
+ && bundle install
 
-USER app
+ADD . /var/www/rails/
 
-ADD docker-entrypoint.sh /docker-entrypoint.sh
+RUN SECRET_KEY_BASE=dummyvalue bundle exec rails assets:precompile
 
-ENTRYPOINT ["/docker-entrypoint.sh"]
+RUN addgroup -S rails && adduser -S rails -G rails -h /var/www/rails/ \
+ && chown -R rails.rails /var/www/rails/ \
+ && chown -R rails.rails /usr/local/bundle
+
+USER rails
 
 CMD ["web"]
