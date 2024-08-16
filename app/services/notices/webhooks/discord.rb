@@ -31,11 +31,11 @@ module Notices::Webhooks
 
     def body
       {
-        embeds: [{
+        embeds: [ {
           title:       "Project «#{notice.project.name}» has #{errors.size} new #{"error".pluralize(errors.size)}",
           description: errors.join("\n"),
           url:         Trestle::Engine.routes.url_helpers.notices_admin_url(notice)
-        }]
+        } ]
       }
     end
 

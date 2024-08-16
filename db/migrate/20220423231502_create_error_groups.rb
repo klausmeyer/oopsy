@@ -7,6 +7,6 @@ class CreateErrorGroups < ActiveRecord::Migration[7.0]
       t.timestamps
     end
 
-    add_index :error_groups, [:project_id, :name], unique: true
+    add_index :error_groups, [ :project_id, :name ], unique: true
   end
 end

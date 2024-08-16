@@ -17,7 +17,7 @@ class BacktraceField < Trestle::Form::Field
         entry["code"].each do |line, code|
           output << "<tr>".html_safe
           output << content_tag(:td, class: "line-number") { line }
-          output << content_tag(:td, class: {"line-code": true, "current-line": line.to_i == entry["line"]}) do
+          output << content_tag(:td, class: { "line-code": true, "current-line": line.to_i == entry["line"] }) do
             content_tag(:pre, class: "highlight") { highlight(code, entry["file"]) }
           end
           output << "</tr>".html_safe

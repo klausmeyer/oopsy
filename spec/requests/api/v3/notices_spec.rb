@@ -6,7 +6,7 @@ RSpec.describe "POST /api/v3/notices" do
 
     context "with a valid token" do
       let(:headers) do
-        {"Authorization" => "Bearer #{project.api_key}"}
+        { "Authorization" => "Bearer #{project.api_key}" }
       end
 
       context "with the correct project_id" do

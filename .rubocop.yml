@@ -1,34 +1,8 @@
-require: standard
+# Omakase Ruby styling for Rails
+inherit_gem: { rubocop-rails-omakase: rubocop.yml }
 
-inherit_gem:
-  standard: config/base.yml
-
-AllCops:
-  SuggestExtensions: false
-  Exclude:
-    - db/schema.rb
-
-Layout/ExtraSpacing:
-  AllowForAlignment: true
-
-Layout/HashAlignment:
-  EnforcedColonStyle: table
-  EnforcedHashRocketStyle: table
-
-# Some excludes for default rails files
-
-Layout/SpaceInsideArrayLiteralBrackets:
-  Exclude:
-    - config/environments/production.rb
-
-Layout/SpaceInsidePercentLiteralDelimiters:
-  Exclude:
-    - Gemfile
-
-Style/GlobalStdStream:
-  Exclude:
-    - config/environments/production.rb
-
-Style/PercentLiteralDelimiters:
-  Exclude:
-    - config/application.rb
+# Overwrite or add rules to create your own house style
+#
+# # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
+# Layout/SpaceInsideArrayLiteralBrackets:
+#   Enabled: false
