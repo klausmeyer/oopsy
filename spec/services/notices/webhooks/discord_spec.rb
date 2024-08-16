@@ -42,11 +42,11 @@ RSpec.describe Notices::Webhooks::Discord do
       expect(webhook_request.with do |req|
         expect(req.headers["Content-Type"]).to eq "application/json"
         expect(req.body).to eq({
-          embeds: [{
+          embeds: [ {
             title:       "Project «#{notice.project.name}» has 2 new errors",
             description: "* `ErrorType`\n* `ErrorType`",
             url:         "http://localhost:3000/web/notices/#{notice.id}"
-          }]
+          } ]
         }.to_json)
       end).to have_been_made
     end

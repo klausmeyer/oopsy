@@ -13,7 +13,7 @@ RSpec.describe Notices::ParseRawDataJob do
       expect(error.error_type).to eq "error1"
       expect(error.error_message).to eq "message1"
       expect(error.backtrace).to eq [
-        "code"     => {"1" => "code", "2" => "more code"},
+        "code"     => { "1" => "code", "2" => "more code" },
         "file"     => "backtrace file",
         "function" => "backtrace function",
         "line"     => 10

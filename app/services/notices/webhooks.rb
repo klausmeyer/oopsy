@@ -1,5 +1,5 @@
 module Notices::Webhooks
-  TARGETS = [Discord]
+  TARGETS = [ Discord ]
 
   class << self
     def enabled?

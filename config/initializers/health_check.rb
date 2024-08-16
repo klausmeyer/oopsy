@@ -1,7 +1,7 @@
 HealthCheck.setup do |config|
   config.uri             = "health"
   config.standard_checks = []
-  config.full_checks     = ["database", "migrations", "redis", "postgres_write"]
+  config.full_checks     = [ "database", "migrations", "redis", "postgres_write" ]
   config.redis_password  = nil
 
   config.add_custom_check("postgres_write") do

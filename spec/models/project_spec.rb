@@ -7,7 +7,7 @@ RSpec.describe Project do
       p2 = FactoryBot.create :project, name: "Project A"
       p3 = FactoryBot.create :project, name: "Project B"
 
-      expect(described_class.by_name).to eq [p2, p3, p1]
+      expect(described_class.by_name).to eq [ p2, p3, p1 ]
     end
   end
 end

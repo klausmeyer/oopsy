@@ -13,7 +13,7 @@ RSpec.describe Notice do
     end
 
     context "with context being a hash" do
-      let(:context) { {method.to_s => "value"} }
+      let(:context) { { method.to_s => "value" } }
 
       it { is_expected.to eq "value" }
     end
