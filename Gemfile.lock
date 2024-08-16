@@ -149,6 +149,7 @@ GEM
       net-smtp
     marcel (1.0.4)
     mini_mime (1.1.5)
+    mini_portile2 (2.8.7)
     minitest (5.24.1)
     msgpack (1.7.2)
     net-http (0.4.1)
@@ -163,7 +164,8 @@ GEM
     net-smtp (0.5.0)
       net-protocol
     nio4r (2.7.3)
-    nokogiri (1.16.7-x86_64-linux)
+    nokogiri (1.16.7)
+      mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     parallel (1.26.2)
     parser (3.3.4.2)
@@ -336,7 +338,7 @@ GEM
     zeitwerk (2.6.16)
 
 PLATFORMS
-  x86_64-linux
+  ruby
 
 DEPENDENCIES
   aasm (~> 5.5.0)
