@@ -33,9 +33,9 @@ Trestle.resource(:notices) do
     actions do |toolbar, instance, admin|
       case instance.state.to_sym
       when :parsed
-        toolbar.link "Acknowledge", instance, action: :acknowledge, method: :put, style: :success, icon: "fa fa-check"
+        toolbar.link "Acknowledge", instance, action: :acknowledge, data: { turbo_method: :put }, style: :success, icon: "fa fa-check"
       when :acknowledged
-        toolbar.link "Un-Acknowledge", instance, action: :unacknowledge, method: :put, style: :danger, icon: "fa fa-undo"
+        toolbar.link "Un-Acknowledge", instance, action: :unacknowledge, data: { turbo_method: :put }, style: :danger, icon: "fa fa-undo"
       end
     end
   end
@@ -68,7 +68,7 @@ Trestle.resource(:notices) do
 
       flash[:message] = "Notice has been acknowledged"
 
-      redirect_to admin.path(:index)
+      redirect_to admin.path(:index), status: :see_other
     end
 
     def unacknowledge
@@ -76,7 +76,7 @@ Trestle.resource(:notices) do
 
       flash[:message] = "Notice has been un-acknowledged"
 
-      redirect_to admin.path(:index, scope: :acknowledged)
+      redirect_to admin.path(:index, scope: :acknowledged), status: :see_other
     end
 
     private
