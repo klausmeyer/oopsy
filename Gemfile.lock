@@ -319,7 +319,7 @@ GEM
     trestle-auth (0.5.0)
       bcrypt (~> 3.1.7)
       trestle (~> 0.10.0)
-    trestle-sidekiq (0.1.1)
+    trestle-sidekiq (0.1.2)
       sidekiq
       trestle (~> 0.8)
       trestle-auth (~> 0.2, >= 0.2.3)
