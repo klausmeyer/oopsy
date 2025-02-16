@@ -15,7 +15,7 @@ EXPOSE $PORT
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
 RUN apk update \
- && apk add build-base zlib-dev tzdata git nodejs openssl-dev shared-mime-info postgresql-dev libc6-compat \
+ && apk add build-base zlib-dev tzdata git nodejs openssl-dev shared-mime-info postgresql-dev libc6-compat yaml-dev \
  && rm -rf /var/cache/apk/* \
  && mkdir -p /var/www/rails
 
