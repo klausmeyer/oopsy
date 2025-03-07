@@ -62,7 +62,7 @@ gem "trestle-sidekiq", "~> 0.1"
 gem "rouge", "~> 4.0"
 
 # Background Jobs: https://github.com/mperham/sidekiq
-gem "sidekiq", "~> 7.0"
+gem "sidekiq", "~> 8.0"
 
 # Simple health check of Rails app: https://github.com/Purple-Devs/health_check
 gem "health_check", "~> 3.1"
