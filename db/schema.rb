@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_24_195712) do
+ActiveRecord::Schema[8.1].define(version: 2025_10_23_064742) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension "pg_catalog.plpgsql"
 
   create_table "error_groups", force: :cascade do |t|
     t.bigint "project_id", null: false
