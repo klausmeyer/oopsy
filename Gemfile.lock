@@ -320,6 +320,7 @@ GEM
       sprockets (>= 3.0.0)
     stringio (3.1.9)
     thor (1.4.0)
+    thruster (0.1.16)
     tilt (2.3.0)
     timeout (0.4.4)
     trestle (0.10.1)
@@ -378,6 +379,7 @@ DEPENDENCIES
   sidekiq (~> 8.0)
   simplecov (~> 0.22.0)
   sprockets-rails
+  thruster
   trestle (~> 0.9)
   trestle-auth (~> 0.4)
   trestle-sidekiq (~> 0.1)

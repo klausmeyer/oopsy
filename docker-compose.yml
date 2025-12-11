@@ -1,0 +1,21 @@
+services:
+
+  web:
+    build: .
+    command: ["./bin/thrust", "./bin/rails", "server"]
+    environment: &environment
+      DATABASE_URL: postgres://postgres:example@postgres
+      SECRET_KEY_BASE: c270fdad941991fe1eda25c7e74f569ee014f6378327367e3a54e082cf5f63e7054280bf8f5db2cc7d7be54f931f2ddbce1d30368a8b4ba723fcb1b4b32754d0
+    ports:
+      - "8080:80"
+
+  sidekiq:
+    build: .
+    command: ["./bin", "sidekiq"]
+    environment:
+      <<: *environment
+
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_PASSWORD: example
