@@ -89,7 +89,7 @@ GEM
       msgpack (~> 1.2)
     builder (3.3.0)
     concurrent-ruby (1.3.5)
-    connection_pool (3.0.1)
+    connection_pool (3.0.2)
     crack (1.0.1)
       bigdecimal
       rexml
@@ -131,7 +131,7 @@ GEM
       pp (>= 0.6.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
-    json (2.17.1)
+    json (2.18.0)
     kaminari (1.2.2)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.2.2)
@@ -238,7 +238,7 @@ GEM
       tsort
     redis (5.4.1)
       redis-client (>= 0.22.0)
-    redis-client (0.26.1)
+    redis-client (0.26.2)
       connection_pool
     regexp_parser (2.10.0)
     reline (0.6.3)
@@ -299,12 +299,12 @@ GEM
       sprockets-rails
       tilt
     securerandom (0.4.1)
-    sidekiq (8.0.10)
-      connection_pool (>= 2.5.0)
-      json (>= 2.9.0)
-      logger (>= 1.6.2)
-      rack (>= 3.1.0)
-      redis-client (>= 0.23.2)
+    sidekiq (8.1.0)
+      connection_pool (>= 3.0.0)
+      json (>= 2.16.0)
+      logger (>= 1.7.0)
+      rack (>= 3.2.0)
+      redis-client (>= 0.26.0)
     simplecov (0.22.0)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
